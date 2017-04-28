@@ -1,11 +1,14 @@
 package br.com.yaman.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pessoa {
 	String nome;
 	int idade;
 	String endereco;
 	String cpf;
-	Conta conta;
+	List<Conta> listContaPessoa = new ArrayList<Conta>();
 
 	public String getNome() {
 		return nome;
@@ -39,17 +42,20 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Conta getConta() {
-		return conta;
+	public List<Conta> getListContaPessoa() {
+		return listContaPessoa;
 	}
 
-	public void setConta(Conta conta) {
-		this.conta = conta;
+	public void setListContaPessoa(List<Conta> listContaPessoa) {
+		this.listContaPessoa = listContaPessoa;
 	}
 
 	public String toString() {
-		return "Nome: " + this.nome + "\n Idade: " + this.idade + "\n Endereço: " + this.endereco + "\n CPF: " + this.cpf
-				 + "\n Conta " + this.conta;
+		String contas = "";
+		for (Conta conta : listContaPessoa) {
+			contas += conta;
+		}
+		return "Nome: " + this.nome + "\n Idade: " + this.idade + "\n Endereço: " + this.endereco + "\n CPF: " + this.cpf + "\n Contas " + contas;
 
 	}
 
