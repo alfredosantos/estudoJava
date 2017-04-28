@@ -50,6 +50,20 @@ public class Pessoa {
 		this.listContaPessoa = listContaPessoa;
 	}
 
+	public void incluirConta(Conta conta){
+		listContaPessoa.add(conta);
+	}
+	
+	public Conta getConta(int numeroConta){
+		for (Conta conta : listContaPessoa){
+			if (conta.getNumero() == numeroConta) {
+				return conta;
+			} 
+		}
+		return null;
+	}
+	
+	
 	public String toString() {
 		String contas = "";
 		for (Conta conta : listContaPessoa) {

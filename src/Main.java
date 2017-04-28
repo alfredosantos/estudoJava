@@ -18,6 +18,11 @@ public class Main {
 		trabalharComConta(pessoa);
 		
 		System.out.println(pessoa);
+		
+	}
+	public static void inclusaoDeContas(Pessoa pessoa){
+		
+		
 	}
 	
 	public static void trabalharComConta(Pessoa pessoa){
