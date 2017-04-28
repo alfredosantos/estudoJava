@@ -5,8 +5,7 @@ public class Pessoa {
 	int idade;
 	String endereco;
 	String cpf;
-	ContaCorrente contaCorrente;
-	ContaPoupanca contaPoupanca;
+	Conta conta;
 
 	public String getNome() {
 		return nome;
@@ -40,25 +39,17 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public ContaCorrente getContaCorrente() {
-		return contaCorrente;
+	public Conta getConta() {
+		return conta;
 	}
 
-	public void setContaCorrente(ContaCorrente contaCorrente) {
-		this.contaCorrente = contaCorrente;
-	}
-
-	public ContaPoupanca getContaPoupanca() {
-		return contaPoupanca;
-	}
-
-	public void setContaPoupanca(ContaPoupanca contaPoupanca) {
-		this.contaPoupanca = contaPoupanca;
+	public void setConta(Conta conta) {
+		this.conta = conta;
 	}
 
 	public String toString() {
 		return "Nome: " + this.nome + "\n Idade: " + this.idade + "\n Endereço: " + this.endereco + "\n CPF: " + this.cpf
-				 + "\n ContaCorrente " + this.contaCorrente + "\n ContaPoupanca " + this.contaPoupanca ;
+				 + "\n Conta " + this.conta;
 
 	}
 

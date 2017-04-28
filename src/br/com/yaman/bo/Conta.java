@@ -23,7 +23,12 @@ public abstract class Conta {
 		this.saldo = saldo;
 	}
 	
-	public abstract void depositarValor(double valor);
+	public void depositarValor(double valor) {
+		double valorNovo;
+		valorNovo = this.getSaldo() + valor;
+		this.setSaldo(valorNovo);
+		
+	}
 	
 	public String toString(){
 		return "\n Numero: " + this.numero + " Agencia: " + this.agencia + " Saldo: " + this.saldo;
