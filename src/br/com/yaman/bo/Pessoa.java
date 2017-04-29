@@ -50,8 +50,14 @@ public class Pessoa {
 		this.listContaPessoa = listContaPessoa;
 	}
 
-	public void incluirConta(Conta conta){
+	public Boolean incluirConta(Conta conta){
+		for (Conta contaInclusao : listContaPessoa){
+			if (contaInclusao.getNumero() == conta.getNumero()){
+				return false;
+			}
+		}
 		listContaPessoa.add(conta);
+		return true;
 	}
 	
 	public Conta getConta(int numeroConta){
@@ -63,6 +69,39 @@ public class Pessoa {
 		return null;
 	}
 	
+	public Boolean depositoConta(int numeroConta, double valor){
+		for (Conta conta : listContaPessoa){
+			if (conta.getNumero() == numeroConta) {
+				conta.depositarValor(valor);
+				return true;
+			} 
+		}
+		return false;
+	}
+	
+	public Boolean removerConta(int numeroConta){
+		Conta contaTemp = new ContaCorrente();
+		for (Conta conta : listContaPessoa){
+			if (conta.getNumero() == numeroConta) {
+				contaTemp = conta;
+			} 
+		}
+		return listContaPessoa.remove(contaTemp);
+	}
+	
+	public Boolean saqueConta(int numeroConta, double valor){
+		double saque;
+		for (Conta conta : listContaPessoa){
+			if (conta.getNumero() == numeroConta){
+				if (conta.getSaldo() > valor){
+					saque = conta.getSaldo() - valor;
+					conta.setSaldo(saque);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 	public String toString() {
 		String contas = "";
