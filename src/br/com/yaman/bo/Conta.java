@@ -3,6 +3,7 @@ public abstract class Conta {
 	int numero;
 	int agencia;
 	double saldo;
+	double limite;
 	
 	public int getNumero() {
 		return numero;
@@ -23,11 +24,27 @@ public abstract class Conta {
 		this.saldo = saldo;
 	}
 	
+	public double getLimite() {
+		return limite;
+	}
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
 	public void depositarValor(double valor) {
 		double valorNovo;
 		valorNovo = this.getSaldo() + valor;
 		this.setSaldo(valorNovo);
 		
+	}
+	
+	public Double saque(double valor) throws Exception{
+		double saque;
+		if (getSaldo() + getLimite() >= valor){
+			saque = getSaldo() - valor;
+			setSaldo(saque);
+			return getSaldo() + getLimite();
+		}
+		throw new Exception("Saldo insuficiente");
 	}
 	
 	public String toString(){

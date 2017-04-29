@@ -3,11 +3,13 @@ package br.com.yaman.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.yaman.common.Cpf;
+
 public class Pessoa {
 	String nome;
 	int idade;
-	String endereco;
-	String cpf;
+	Endereco endereco;
+	Cpf cpf;
 	List<Conta> listContaPessoa = new ArrayList<Conta>();
 
 	public String getNome() {
@@ -26,20 +28,20 @@ public class Pessoa {
 		this.idade = idade;
 	}
 
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
-	public String getCpf() {
+	public Cpf getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpf(Cpf cpf) {
+			this.cpf = cpf;
 	}
 
 	public List<Conta> getListContaPessoa() {
@@ -89,16 +91,13 @@ public class Pessoa {
 		return listContaPessoa.remove(contaTemp);
 	}
 	
-	public Boolean saqueConta(int numeroConta, double valor){
-		double saque;
+	public Boolean saqueConta(int numeroConta, double valor) throws Exception{
+
 		for (Conta conta : listContaPessoa){
 			if (conta.getNumero() == numeroConta){
-				if (conta.getSaldo() > valor){
-					saque = conta.getSaldo() - valor;
-					conta.setSaldo(saque);
+					conta.saque(valor);
 					return true;
 				}
-			}
 		}
 		return false;
 	}
